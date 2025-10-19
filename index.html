@@ -3,6 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Updated meta tags with actual company logo and published URL -->
+    <meta name="description" content="Agenda tu servicio de limpieza profesional en Valencia. Visita gratuita y sin compromiso. Solicita tu cita ahora.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://teechounamano.github.io/Solicitud/">
+    <meta property="og:title" content="Agendar Servicio de Limpieza">
+    <meta property="og:description" content="Agenda tu servicio de limpieza profesional en Valencia. Visita gratuita y sin compromiso.">
+    <meta property="og:image" content="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://teechounamano.github.io/Solicitud/">
+    <meta property="twitter:title" content="Agendar Servicio de Limpieza">
+    <meta property="twitter:description" content="Agenda tu servicio de limpieza profesional en Valencia. Visita gratuita y sin compromiso.">
+    <meta property="twitter:image" content="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png">
+    
     <title>Agendar Servicio </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
@@ -65,7 +86,7 @@
         
         .input-focus { 
             transition: all 0.3s ease; 
-            font-size: 16px; /* Evita zoom en iOS */
+            font-size: 16px;
         }
         
         .input-focus:focus { 
@@ -204,7 +225,6 @@
             transition: all 0.3s ease;
         }
         
-        /* Responsive adjustments */
         @media (min-width: 640px) {
             .container {
                 max-width: 600px;
@@ -480,7 +500,6 @@
                     hideFieldError('fecha2');
                 }
 
-                // Validar que las fechas no sean pasadas
                 const today = new Date().toISOString().split('T')[0];
                 if (fecha1 < today) {
                     showFieldError('fecha1', 'La fecha no puede ser anterior a hoy');
@@ -666,7 +685,6 @@ _Visita gratuita y sin compromiso_`;
         document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
             
-            // Establecer fecha mínima como hoy
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha1').setAttribute('min', today);
             document.getElementById('fecha2').setAttribute('min', today);
@@ -681,7 +699,6 @@ _Visita gratuita y sin compromiso_`;
             }, 100);
         });
 
-        // Validación en tiempo real
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', function() {
                 const fieldId = this.id;
