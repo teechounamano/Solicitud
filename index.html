@@ -23,7 +23,6 @@
     <title>Agendar Servicio - TeEchoUnaMano</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Cambiando fuente de Inter a Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { 
@@ -33,7 +32,6 @@
         }
         
         :root {
-            /* Actualizando colores para coincidir con el sitio web principal */
             --primary: #3ec2f2;
             --primary-hover: #0067b0;
             --primary-light: rgba(62, 194, 242, 0.1);
@@ -62,21 +60,125 @@
         }
         
         body { 
-            /* Cambiando fuente a Montserrat para coincidir con el sitio web */
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--surface);
             color: var(--foreground);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 1rem;
+            padding: 0;
+        }
+
+        /* Agregando estilos para el header con logo */
+        header {
+            background: linear-gradient(to right, #3ec2f2, #0067b0);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 0.5rem;
+            background: white;
+            padding: 0.25rem;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        .header-link {
+            background: white;
+            color: #0067b0;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .header-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        @media (max-width: 640px) {
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.125rem;
+            }
+
+            .logo-text p {
+                font-size: 0.75rem;
+            }
+
+            .header-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.8125rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-link {
+                width: 100%;
+            }
         }
         
         .container {
             max-width: 600px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
         
-        /* Header */
         .header {
             text-align: center;
             margin-bottom: 2rem;
@@ -100,7 +202,6 @@
         .header h1 {
             font-size: clamp(1.75rem, 5vw, 2.5rem);
             font-weight: 700;
-            /* Actualizando gradiente con los colores del sitio web */
             background: linear-gradient(to right, #3ec2f2, #0067b0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -144,7 +245,6 @@
         }
         
         .step-indicator.active {
-            /* Actualizando gradiente del indicador activo */
             background: linear-gradient(to right, #3ec2f2, #0067b0);
             color: white;
             border-color: transparent;
@@ -169,7 +269,6 @@
         
         .progress-fill {
             height: 100%;
-            /* Actualizando gradiente de la barra de progreso */
             background: linear-gradient(to right, #3ec2f2, #0067b0);
             width: 0%;
             transition: width 0.3s ease;
@@ -302,7 +401,6 @@
         
         /* Info Card */
         .info-card {
-            /* Actualizando gradiente de la tarjeta de informaci贸n */
             background: linear-gradient(135deg, rgba(0, 103, 176, 0.1) 0%, rgba(62, 194, 242, 0.1) 100%);
             border: 1px solid var(--border);
             border-radius: 0.75rem;
@@ -319,7 +417,6 @@
         .info-card svg {
             width: 1.25rem;
             height: 1.25rem;
-            /* Actualizando color del icono */
             color: #0067b0;
             flex-shrink: 0;
             margin-top: 0.125rem;
@@ -338,7 +435,6 @@
         }
         
         .info-card-text .highlight {
-            /* Actualizando color del texto destacado */
             color: #3ec2f2;
             font-weight: 600;
         }
@@ -556,7 +652,6 @@
             justify-content: center;
             width: 2rem;
             height: 2rem;
-            /* Actualizando color de fondo del icono */
             background: rgba(62, 194, 242, 0.1);
             color: #3ec2f2;
             border-radius: 0.5rem;
@@ -580,7 +675,6 @@
         }
 
         .modal-info {
-            /* Actualizando gradiente del modal de informaci贸n */
             background: linear-gradient(135deg, rgba(0, 103, 176, 0.1) 0%, rgba(62, 194, 242, 0.1) 100%);
             border: 1px solid var(--border);
             border-radius: 0.5rem;
@@ -597,7 +691,6 @@
         .modal-info svg {
             width: 1.25rem;
             height: 1.25rem;
-            /* Actualizando color del icono */
             color: #0067b0;
             flex-shrink: 0;
             margin-top: 0.125rem;
@@ -809,10 +902,28 @@
     </style>
 </head>
 <body>
+    <!-- Agregando header con logo y enlace al sitio web -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png" alt="TeEchoUnaMano Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>TeEchoUnaMano TUM</h1>
+                        <p>Servicios de Limpieza Profesional</p>
+                    </div>
+                </div>
+                <a href="https://te-echounamano.blogspot.com" target="_blank" rel="noopener noreferrer" class="header-link">
+                    Más información
+                </a>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="header-icon">馃搮</div>
+            <div class="header-icon">??</div>
             <h1>Agendar Servicio</h1>
             <p>Solicitud de cita para servicio de limpieza</p>
         </div>
@@ -820,14 +931,13 @@
         <!-- Progress -->
         <div class="progress-section">
             <div class="progress-steps">
-                <!-- Cambiando iconos SVG por emojis originales -->
-                <div class="step-indicator active" id="step1">馃摑</div>
+                <div class="step-indicator active" id="step1">??</div>
                 <div class="progress-line"><div class="progress-fill" id="progress1"></div></div>
-                <div class="step-indicator" id="step2">馃搷</div>
+                <div class="step-indicator" id="step2">??</div>
                 <div class="progress-line"><div class="progress-fill" id="progress2"></div></div>
-                <div class="step-indicator" id="step3">馃搮</div>
+                <div class="step-indicator" id="step3">??</div>
             </div>
-            <p class="step-description" id="stepDescription">Paso 1: Informaci贸n personal</p>
+            <p class="step-description" id="stepDescription">Paso 1: Información personal</p>
         </div>
 
         <!-- Form -->
@@ -836,9 +946,8 @@
                 <!-- Step 1: Personal Info -->
                 <div class="form-step active" id="formStep1">
                     <div class="step-header">
-                        <!-- Cambiando icono SVG por emoji -->
-                        <div class="step-icon">馃摑</div>
-                        <h3>Informaci贸n Personal</h3>
+                        <div class="step-icon">??</div>
+                        <h3>Información Personal</h3>
                         <p>Datos para contactarte</p>
                     </div>
                     
@@ -850,7 +959,7 @@
                             </svg>
                             Tu nombre completo
                         </label>
-                        <input type="text" id="nombre" class="form-input" placeholder="Ej: Juan P茅rez Garc铆a" required>
+                        <input type="text" id="nombre" class="form-input" placeholder="Ej: Juan Pérez García" required>
                         <div class="error-message" id="errorNombre">Por favor, ingresa tu nombre completo</div>
                     </div>
                     
@@ -868,10 +977,9 @@
                 <!-- Step 2: Address -->
                 <div class="form-step" id="formStep2">
                     <div class="step-header">
-                        <!-- Cambiando icono SVG por emoji -->
-                        <div class="step-icon">馃搷</div>
-                        <h3>Direcci贸n del Piso</h3>
-                        <p>Informaci贸n completa de la ubicaci贸n</p>
+                        <div class="step-icon">??</div>
+                        <h3>Dirección del Piso</h3>
+                        <p>Información completa de la ubicación</p>
                     </div>
                     
                     <div class="form-group">
@@ -880,10 +988,10 @@
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                                 <polyline points="9 22 9 12 15 12 15 22"/>
                             </svg>
-                            Calle y n煤mero
+                            Calle y número
                         </label>
                         <input type="text" id="calle" class="form-input" placeholder="Ej: Calle Mayor, 123" required>
-                        <div class="error-message" id="errorCalle">Por favor, ingresa la calle y n煤mero</div>
+                        <div class="error-message" id="errorCalle">Por favor, ingresa la calle y número</div>
                     </div>
                     
                     <div class="address-grid">
@@ -911,7 +1019,7 @@
                                 </svg>
                                 Piso
                             </label>
-                            <input type="text" id="piso" class="form-input" placeholder="1潞, 2潞..." required>
+                            <input type="text" id="piso" class="form-input" placeholder="1o, 2o..." required>
                             <div class="error-message" id="errorPiso">Requerido</div>
                         </div>
                         
@@ -948,7 +1056,7 @@
                                 <line x1="19" y1="12" x2="5" y2="12"/>
                                 <polyline points="12 19 5 12 12 5"/>
                             </svg>
-                            <span>Atr谩s</span>
+                            <span>Atrás</span>
                         </button>
                         <button type="button" class="btn btn-primary" onclick="nextStep()">
                             <span>Continuar</span>
@@ -963,10 +1071,9 @@
                 <!-- Step 3: Dates -->
                 <div class="form-step" id="formStep3">
                     <div class="step-header">
-                        <!-- Cambiando icono SVG por emoji -->
-                        <div class="step-icon">馃搮</div>
-                        <h3>驴Qu茅 d铆a?</h3>
-                        <p>Selecciona dos opciones de d铆a</p>
+                        <div class="step-icon">??</div>
+                        <h3>?Qué día?</h3>
+                        <p>Selecciona dos opciones de día</p>
                     </div>
                     
                     <div class="date-grid">
@@ -978,7 +1085,7 @@
                                     <line x1="8" y1="2" x2="8" y2="6"/>
                                     <line x1="3" y1="10" x2="21" y2="10"/>
                                 </svg>
-                                Primera opci贸n
+                                Primera opción
                             </label>
                             <input type="date" id="fecha1" class="form-input" required>
                             <div class="error-message" id="errorFecha1">Selecciona la primera fecha</div>
@@ -992,7 +1099,7 @@
                                     <line x1="8" y1="2" x2="8" y2="6"/>
                                     <line x1="3" y1="10" x2="21" y2="10"/>
                                 </svg>
-                                Segunda opci贸n
+                                Segunda opción
                             </label>
                             <input type="date" id="fecha2" class="form-input" required>
                             <div class="error-message" id="errorFecha2">Selecciona la segunda fecha</div>
@@ -1005,7 +1112,7 @@
                                 <line x1="19" y1="12" x2="5" y2="12"/>
                                 <polyline points="12 19 5 12 12 5"/>
                             </svg>
-                            <span>Atr谩s</span>
+                            <span>Atrás</span>
                         </button>
                         <button type="submit" class="btn btn-primary" id="submitBtn">
                             <span>Enviar Solicitud</span>
@@ -1025,12 +1132,12 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
-                Tus datos est谩n protegidos y se env铆an de forma segura
+                Tus datos están protegidos y se envían de forma segura
             </p>
         </div>
     </div>
 
-    <!-- Agregando modal de confirmaci贸n con resumen de datos -->
+    <!-- Agregando modal de confirmación con resumen de datos -->
     <!-- Modal -->
     <div class="modal" id="confirmModal">
         <div class="modal-content">
@@ -1051,7 +1158,7 @@
                 <p class="modal-section-title">Resumen de tu solicitud</p>
                 
                 <div class="modal-data-item">
-                    <div class="modal-data-icon">馃摑</div>
+                    <div class="modal-data-icon">??</div>
                     <div class="modal-data-text">
                         <p>Nombre</p>
                         <p id="modalNombre">-</p>
@@ -1059,25 +1166,25 @@
                 </div>
 
                 <div class="modal-data-item">
-                    <div class="modal-data-icon">馃搷</div>
+                    <div class="modal-data-icon">??</div>
                     <div class="modal-data-text">
-                        <p>Direcci贸n</p>
+                        <p>Dirección</p>
                         <p id="modalDireccion">-</p>
                     </div>
                 </div>
 
                 <div class="modal-data-item">
-                    <div class="modal-data-icon">馃搮</div>
+                    <div class="modal-data-icon">??</div>
                     <div class="modal-data-text">
-                        <p>Primera opci贸n</p>
+                        <p>Primera opción</p>
                         <p id="modalFecha1">-</p>
                     </div>
                 </div>
 
                 <div class="modal-data-item">
-                    <div class="modal-data-icon">馃搮</div>
+                    <div class="modal-data-icon">??</div>
                     <div class="modal-data-text">
-                        <p>Segunda opci贸n</p>
+                        <p>Segunda opción</p>
                         <p id="modalFecha2">-</p>
                     </div>
                 </div>
@@ -1091,7 +1198,7 @@
                     </svg>
                     <div class="modal-info-text">
                         <p>Estamos procesando tu solicitud</p>
-                        <p>Al confirmar, se abrir谩 WhatsApp con tu solicitud. Nuestro equipo te responder谩 en menos de 24 horas para coordinar la visita gratuita y sin compromiso.</p>
+                        <p>Al confirmar, se abrirá WhatsApp con tu solicitud. Nuestro equipo te responderá en menos de 24 horas para coordinar la visita gratuita y sin compromiso.</p>
                     </div>
                 </div>
             </div>
@@ -1124,7 +1231,7 @@
                 </svg>
             </div>
             <div class="toast-text">
-                <p id="toastTitle">T铆tulo</p>
+                <p id="toastTitle">Título</p>
                 <p id="toastMessage">Mensaje</p>
             </div>
         </div>
@@ -1135,8 +1242,8 @@
         const totalSteps = 3;
 
         const stepDescriptions = [
-            'Paso 1: Informaci贸n personal',
-            'Paso 2: Direcci贸n completa',
+            'Paso 1: Información personal',
+            'Paso 2: Dirección completa',
             'Paso 3: Fechas disponibles'
         ];
 
@@ -1192,7 +1299,7 @@
                 fields.forEach(field => {
                     const input = document.getElementById(field);
                     if (!input.value.trim()) {
-                        showError(field, field === 'calle' ? 'Por favor, ingresa la calle y n煤mero' : 'Campo requerido');
+                        showError(field, field === 'calle' ? 'Por favor, ingresa la calle y número' : 'Campo requerido');
                         isValid = false;
                     } else {
                         hideError(field);
@@ -1354,14 +1461,14 @@
 
 *Cliente:* ${nombre}
 
-*Direcci贸n:*
+*Dirección:*
 ${calle}
 Portal ${portal}, ${piso}, Puerta ${puerta}
 Valencia capital
 
 *Fechas disponibles:*
-1陋 opci贸n: ${formatDate(fecha1)}
-2陋 opci贸n: ${formatDate(fecha2)}
+1a opción: ${formatDate(fecha1)}
+2a opción: ${formatDate(fecha2)}
 
 _Visita gratuita y sin compromiso_`;
 
@@ -1369,7 +1476,7 @@ _Visita gratuita y sin compromiso_`;
 
             setTimeout(() => {
                 window.open(whatsappUrl, '_blank');
-                showToast('隆Solicitud enviada!', 'Te estamos redirigiendo a WhatsApp', 'success');
+                showToast('?Solicitud enviada!', 'Te estamos redirigiendo a WhatsApp', 'success');
                 
                 document.getElementById('confirmModal').classList.remove('active');
                 submitBtn.classList.remove('loading');
