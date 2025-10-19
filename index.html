@@ -4,427 +4,1128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Updated meta tags with actual company logo and published URL -->
     <meta name="description" content="Agenda tu servicio de limpieza profesional en Valencia. Visita gratuita y sin compromiso. Solicita tu cita ahora.">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://teechounamano.github.io/Solicitud/">
     <meta property="og:title" content="Agendar Servicio de Limpieza">
     <meta property="og:description" content="Agenda tu servicio de limpieza profesional en Valencia. Visita gratuita y sin compromiso.">
     <meta property="og:image" content="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png">
     
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://teechounamano.github.io/Solicitud/">
     <meta property="twitter:title" content="Agendar Servicio de Limpieza">
     <meta property="twitter:description" content="Agenda tu servicio de limpieza profesional en Valencia. Visita gratuita y sin compromiso.">
     <meta property="twitter:image" content="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://i.ibb.co/HTyGwGhP/TUMSIN-FONDO-1024-X1024.png">
     
-    <title>Agendar Servicio </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Agendar Servicio - TeEchoUnaMano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cambiando fuente de Inter a Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { 
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         
-        body { 
-            background: #ffffff;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+        :root {
+            /* Actualizando colores para coincidir con el sitio web principal */
+            --primary: #3ec2f2;
+            --primary-hover: #0067b0;
+            --primary-light: rgba(62, 194, 242, 0.1);
+            --accent: #0067b0;
+            --accent-hover: #004d85;
+            --accent-light: rgba(0, 103, 176, 0.1);
+            
+            --background: #ffffff;
+            --surface: #f4f5f9;
+            --card-bg: #ffffff;
+            
+            --foreground: #0f172a;
+            --foreground-muted: #475569;
+            --foreground-subtle: #64748b;
+            
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            
+            --success: #21c87a;
+            --error: #ef4444;
+            --error-light: #fef2f2;
+            
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
         
-        .container {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
+        body { 
+            /* Cambiando fuente a Montserrat para coincidir con el sitio web */
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--surface);
+            color: var(--foreground);
+            line-height: 1.6;
+            min-height: 100vh;
             padding: 1rem;
         }
         
-        .glass-effect { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(0, 0, 0, 0.1); 
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .form-container { 
-            background: rgba(255, 255, 255, 0.98); 
-            backdrop-filter: blur(25px); 
-            border: 1px solid rgba(0, 0, 0, 0.08); 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.6s ease-out;
         }
         
-        .floating-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .header-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: var(--background);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
         
-        .gradient-text { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+        .header h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 700;
+            /* Actualizando gradiente con los colores del sitio web */
+            background: linear-gradient(to right, #3ec2f2, #0067b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
         }
         
-        .button-gradient { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); 
-            transition: all 0.3s ease; 
+        .header p {
+            color: var(--foreground-muted);
+            font-size: 0.9375rem;
         }
         
-        .button-gradient:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); 
+        /* Progress Bar */
+        .progress-section {
+            margin-bottom: 2rem;
+            animation: fadeIn 0.6s ease-out 0.2s both;
         }
         
-        .input-focus { 
-            transition: all 0.3s ease; 
-            font-size: 16px;
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
         
-        .input-focus:focus { 
-            transform: translateY(-1px); 
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15); 
-            border-color: #667eea;
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            background: var(--surface);
+            color: var(--foreground-subtle);
+            border: 2px solid var(--border);
         }
         
-        .input-error {
-            border-color: #ef4444 !important;
-            background-color: #fef2f2 !important;
-            animation: shake 0.5s ease-in-out;
+        .step-indicator.active {
+            /* Actualizando gradiente del indicador activo */
+            background: linear-gradient(to right, #3ec2f2, #0067b0);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1);
+            box-shadow: var(--shadow);
         }
         
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        .step-indicator.completed {
+            background: var(--success);
+            color: white;
+            border-color: transparent;
         }
         
-        .message-toast { 
-            position: fixed; 
-            top: 20px; 
-            right: 20px; 
-            z-index: 1000; 
-            transform: translateX(400px); 
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+        .progress-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            border-radius: 1px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .message-toast.show { transform: translateX(0); }
-        
-        .loading-spinner { 
-            display: inline-block; 
-            width: 20px; 
-            height: 20px; 
-            border: 3px solid rgba(255,255,255,.3); 
-            border-radius: 50%; 
-            border-top-color: #fff; 
-            animation: spin 1s ease-in-out infinite; 
+        .progress-fill {
+            height: 100%;
+            /* Actualizando gradiente de la barra de progreso */
+            background: linear-gradient(to right, #3ec2f2, #0067b0);
+            width: 0%;
+            transition: width 0.3s ease;
         }
         
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .fade-in { animation: fadeIn 0.8s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .slide-in { animation: slideIn 0.6s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        
-        .form-step { display: none; animation: slideIn 0.5s ease-out; }
-        .form-step.active { display: block; }
-        
-        .progress-bar { 
-            height: 3px; 
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); 
-            border-radius: 2px; 
-            transition: width 0.3s ease; 
+        .step-description {
+            text-align: center;
+            color: var(--foreground-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
         }
         
-        .step-indicator { 
-            width: 35px; 
-            height: 35px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: 600; 
-            transition: all 0.3s ease; 
-            font-size: 14px;
+        /* Form Container */
+        .form-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+            animation: fadeIn 0.6s ease-out 0.4s both;
         }
         
-        .step-indicator.active { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-            color: white; 
-            transform: scale(1.1); 
+        .form-step {
+            display: none;
         }
         
-        .step-indicator.completed { background: #4ade80; color: white; }
-        .step-indicator.pending { background: #e5e7eb; color: #6b7280; }
+        .form-step.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+        
+        .step-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .step-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .step-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-header p {
+            color: var(--foreground-muted);
+            font-size: 0.9375rem;
+        }
+        
+        /* Form Fields */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-label svg {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.25rem;
+            vertical-align: middle;
+            color: var(--primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--foreground);
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--background);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        
+        .form-input.error {
+            border-color: var(--error);
+            background: var(--error-light);
+        }
         
         .error-message {
-            color: #ef4444;
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
             display: none;
+            color: var(--error);
+            font-size: 0.8125rem;
+            margin-top: 0.375rem;
         }
         
         .error-message.show {
             display: block;
-        }
-        
-        .highlight-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 600;
+            animation: shake 0.4s ease-in-out;
         }
         
         .address-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 1rem;
         }
         
         .date-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
         
+        /* Info Card */
         .info-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 1px solid #0ea5e9;
-            border-radius: 12px;
+            /* Actualizando gradiente de la tarjeta de información */
+            background: linear-gradient(135deg, rgba(0, 103, 176, 0.1) 0%, rgba(62, 194, 242, 0.1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
             padding: 1rem;
-            position: relative;
-            overflow: hidden;
+            margin-top: 1.5rem;
         }
         
-        .info-card::before {
+        .info-card-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .info-card svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            /* Actualizando color del icono */
+            color: #0067b0;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+        
+        .info-card-text p:first-child {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .info-card-text p:last-child {
+            font-size: 0.8125rem;
+            color: var(--foreground-muted);
+        }
+        
+        .info-card-text .highlight {
+            /* Actualizando color del texto destacado */
+            color: #3ec2f2;
+            font-weight: 600;
+        }
+        
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn svg {
+            width: 1.125rem;
+            height: 1.125rem;
+        }
+        
+        .btn-secondary {
+            background: var(--background);
+            color: var(--foreground);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--surface);
+            border-color: var(--border-hover);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            background: var(--primary-hover);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-1px);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-primary.loading {
+            position: relative;
+            color: transparent;
+        }
+        
+        .btn-primary.loading::after {
             content: '';
             position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.6s ease-out 0.6s both;
+        }
+        
+        .footer p {
+            color: var(--foreground-subtle);
+            font-size: 0.8125rem;
+        }
+        
+        .footer svg {
+            display: inline-block;
+            width: 0.875rem;
+            height: 0.875rem;
+            margin-right: 0.25rem;
+            vertical-align: middle;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 100%);
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            animation: fadeIn 0.2s;
         }
-        
-        .step-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--background);
+            border-radius: 1rem;
             padding: 1.5rem;
-            transition: all 0.3s ease;
+            max-width: 32rem;
+            width: 100%;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
         }
-        
-        @media (min-width: 640px) {
-            .container {
-                max-width: 600px;
-                padding: 2rem;
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(1rem);
+                opacity: 0;
             }
-            
-            .address-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-            }
-            
-            .date-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .step-indicator {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .modal-header-text h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-header-text p {
+            font-size: 0.875rem;
+            color: var(--foreground-muted);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--foreground-subtle);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            margin: -0.5rem -0.5rem 0 0;
+        }
+
+        .modal-close:hover {
+            background: var(--surface);
+            color: var(--foreground);
+        }
+
+        .modal-close svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .modal-body {
+            background: var(--surface);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body p.modal-section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground-muted);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-data-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-data-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .modal-data-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            /* Actualizando color de fondo del icono */
+            background: rgba(62, 194, 242, 0.1);
+            color: #3ec2f2;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .modal-data-text p:first-child {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--foreground-subtle);
+            margin-bottom: 0.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-data-text p:last-child {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .modal-info {
+            /* Actualizando gradiente del modal de información */
+            background: linear-gradient(135deg, rgba(0, 103, 176, 0.1) 0%, rgba(62, 194, 242, 0.1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-info-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .modal-info svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            /* Actualizando color del icono */
+            color: #0067b0;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .modal-info-text p:first-child {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .modal-info-text p:last-child {
+            font-size: 0.8125rem;
+            color: var(--foreground-muted);
+            line-height: 1.5;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .modal-btn svg {
+            width: 1.125rem;
+            height: 1.125rem;
+        }
+
+        .modal-btn-cancel {
+            background: var(--background);
+            color: var(--foreground);
+            border: 1px solid var(--border);
+        }
+
+        .modal-btn-cancel:hover {
+            background: var(--surface);
+        }
+
+        .modal-btn-confirm {
+            background: var(--primary);
+            color: white;
+        }
+
+        .modal-btn-confirm:hover {
+            background: var(--primary-hover);
+            box-shadow: var(--shadow);
+        }
         
-        @media (max-width: 480px) {
-            .container {
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: var(--shadow-xl);
+            max-width: 20rem;
+            transform: translateX(calc(100% + 2rem));
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .toast-icon {
+            flex-shrink: 0;
+        }
+        
+        .toast-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .toast-icon.success svg {
+            color: var(--success);
+        }
+        
+        .toast-icon.error svg {
+            color: var(--error);
+        }
+        
+        .toast-text p:first-child {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.125rem;
+            font-size: 0.875rem;
+        }
+        
+        .toast-text p:last-child {
+            font-size: 0.8125rem;
+            color: var(--foreground-muted);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-0.5rem);
+            }
+        }
+        
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-0.5rem);
+            }
+            75% {
+                transform: translateX(0.5rem);
+            }
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            body {
                 padding: 0.5rem;
             }
             
-            .step-card {
-                padding: 1rem;
+            .form-container {
+                padding: 1.5rem;
             }
             
-            .form-container {
-                padding: 1rem;
+            .address-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .date-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-indicator {
+                width: 36px;
+                height: 36px;
+                font-size: 0.8125rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="text-center mb-6 fade-in">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg mb-4 floating-animation">
-                <i class="fas fa-calendar-check text-2xl gradient-text"></i>
-            </div>
-            <h1 class="text-3xl md:text-4xl font-bold gradient-text mb-2">Agendar Servicio</h1>
-            <p class="text-gray-600 text-sm md:text-base">Solicitud de cita para servicio de limpieza</p>
+        <!-- Header -->
+        <div class="header">
+            <div class="header-icon">📅</div>
+            <h1>Agendar Servicio</h1>
+            <p>Solicitud de cita para servicio de limpieza</p>
         </div>
 
-        <div class="mb-6 fade-in">
-            <div class="flex justify-center items-center space-x-2 md:space-x-4 mb-4">
-                <div class="step-indicator active" id="step1"><i class="fas fa-user"></i></div>
-                <div class="flex-1 h-1 bg-gray-300 rounded"><div class="progress-bar" id="progress1" style="width: 0%"></div></div>
-                <div class="step-indicator pending" id="step2"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="flex-1 h-1 bg-gray-300 rounded"><div class="progress-bar" id="progress2" style="width: 0%"></div></div>
-                <div class="step-indicator pending" id="step3"><i class="fas fa-calendar"></i></div>
+        <!-- Progress -->
+        <div class="progress-section">
+            <div class="progress-steps">
+                <!-- Cambiando iconos SVG por emojis originales -->
+                <div class="step-indicator active" id="step1">📝</div>
+                <div class="progress-line"><div class="progress-fill" id="progress1"></div></div>
+                <div class="step-indicator" id="step2">📍</div>
+                <div class="progress-line"><div class="progress-fill" id="progress2"></div></div>
+                <div class="step-indicator" id="step3">📅</div>
             </div>
-            <p class="text-center text-gray-600 text-xs md:text-sm font-medium" id="step-description">Paso 1: Información personal</p>
+            <p class="step-description" id="stepDescription">Paso 1: Información personal</p>
         </div>
 
-        <div class="form-container rounded-2xl shadow-xl p-4 md:p-6 fade-in">
-            <form id="appointmentForm" class="space-y-6">
+        <!-- Form -->
+        <div class="form-container">
+            <form id="appointmentForm">
+                <!-- Step 1: Personal Info -->
                 <div class="form-step active" id="formStep1">
-                    <div class="step-card">
-                        <div class="text-center mb-6">
-                            <div class="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-3">
-                                <i class="fas fa-user-circle text-lg text-indigo-600"></i>
-                            </div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-1">Información Personal</h3>
-                            <p class="text-gray-600 text-sm">Datos para contactarte</p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="group">
-                                <label for="nombre" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <i class="fas fa-user mr-1 text-indigo-600"></i>Tu nombre completo
-                                </label>
-                                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez García" class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                <div class="error-message" id="error-nombre">Por favor, ingresa tu nombre completo</div>
-                            </div>
-                        </div>
-                        <button type="button" onclick="nextStep()" class="w-full mt-6 button-gradient text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center space-x-2">
-                            <span>Continuar</span><i class="fas fa-arrow-right"></i>
+                    <div class="step-header">
+                        <!-- Cambiando icono SVG por emoji -->
+                        <div class="step-icon">📝</div>
+                        <h3>Información Personal</h3>
+                        <p>Datos para contactarte</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Tu nombre completo
+                        </label>
+                        <input type="text" id="nombre" class="form-input" placeholder="Ej: Juan Pérez García" required>
+                        <div class="error-message" id="errorNombre">Por favor, ingresa tu nombre completo</div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            <span>Continuar</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
 
+                <!-- Step 2: Address -->
                 <div class="form-step" id="formStep2">
-                    <div class="step-card">
-                        <div class="text-center mb-6">
-                            <div class="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-3">
-                                <i class="fas fa-map-marker-alt text-lg text-indigo-600"></i>
-                            </div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-1">Dirección del Piso</h3>
-                            <p class="text-gray-600 text-sm">Información completa de la ubicación</p>
+                    <div class="step-header">
+                        <!-- Cambiando icono SVG por emoji -->
+                        <div class="step-icon">📍</div>
+                        <h3>Dirección del Piso</h3>
+                        <p>Información completa de la ubicación</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="calle" class="form-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                            Calle y número
+                        </label>
+                        <input type="text" id="calle" class="form-input" placeholder="Ej: Calle Mayor, 123" required>
+                        <div class="error-message" id="errorCalle">Por favor, ingresa la calle y número</div>
+                    </div>
+                    
+                    <div class="address-grid">
+                        <div class="form-group">
+                            <label for="portal" class="form-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="9" y1="3" x2="9" y2="21"/>
+                                </svg>
+                                Portal
+                            </label>
+                            <input type="text" id="portal" class="form-input" placeholder="A, B, C..." required>
+                            <div class="error-message" id="errorPortal">Requerido</div>
                         </div>
-                        <div class="space-y-4">
-                            <div class="group">
-                                <label for="calle" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    <i class="fas fa-road mr-1 text-indigo-600"></i>Calle y número
-                                </label>
-                                <input type="text" id="calle" name="calle" placeholder="Ej: Calle Mayor, 123" class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                <div class="error-message" id="error-calle">Por favor, ingresa la calle y número</div>
-                            </div>
-                            
-                            <div class="address-grid">
-                                <div class="group">
-                                    <label for="portal" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-building mr-1 text-indigo-600"></i>Portal
-                                    </label>
-                                    <input type="text" id="portal" name="portal" placeholder="A, B, C..." class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                    <div class="error-message" id="error-portal">Portal requerido</div>
-                                </div>
-                                
-                                <div class="group">
-                                    <label for="piso" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-layer-group mr-1 text-indigo-600"></i>Piso
-                                    </label>
-                                    <input type="text" id="piso" name="piso" placeholder="1º, 2º, Bajo, B..." class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                    <div class="error-message" id="error-piso">Piso requerido</div>
-                                </div>
-                                
-                                <div class="group">
-                                    <label for="puerta" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-door-open mr-1 text-indigo-600"></i>Puerta
-                                    </label>
-                                    <input type="text" id="puerta" name="puerta" placeholder="A, B, 1, 2..." class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                    <div class="error-message" id="error-puerta">Puerta requerida</div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-card">
-                                <div class="flex items-center">
-                                    <i class="fas fa-info-circle text-blue-600 mr-2 text-sm"></i>
-                                    <div>
-                                        <p class="text-blue-800 font-semibold text-sm mb-1">Valencia capital</p>
-                                        <p class="text-blue-700 text-xs">La visita es <span class="highlight-text">gratuita y sin compromiso</span></p>
-                                    </div>
-                                </div>
+                        
+                        <div class="form-group">
+                            <label for="piso" class="form-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="8" y1="6" x2="21" y2="6"/>
+                                    <line x1="8" y1="12" x2="21" y2="12"/>
+                                    <line x1="8" y1="18" x2="21" y2="18"/>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"/>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"/>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"/>
+                                </svg>
+                                Piso
+                            </label>
+                            <input type="text" id="piso" class="form-input" placeholder="1º, 2º..." required>
+                            <div class="error-message" id="errorPiso">Requerido</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="puerta" class="form-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <circle cx="12" cy="12" r="1"/>
+                                </svg>
+                                Puerta
+                            </label>
+                            <input type="text" id="puerta" class="form-input" placeholder="A, B..." required>
+                            <div class="error-message" id="errorPuerta">Requerido</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-card-content">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                            <div class="info-card-text">
+                                <p>Valencia capital</p>
+                                <p>La visita es <span class="highlight">gratuita y sin compromiso</span></p>
                             </div>
                         </div>
-                        <div class="flex space-x-3 mt-6">
-                            <button type="button" onclick="prevStep()" class="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-lg hover:bg-gray-300 transition-all duration-300 flex items-center justify-center space-x-2 text-sm">
-                                <i class="fas fa-arrow-left"></i><span>Atrás</span>
-                            </button>
-                            <button type="button" onclick="nextStep()" class="flex-1 button-gradient text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center space-x-2 text-sm">
-                                <span>Continuar</span><i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="19" y1="12" x2="5" y2="12"/>
+                                <polyline points="12 19 5 12 12 5"/>
+                            </svg>
+                            <span>Atrás</span>
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            <span>Continuar</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
 
+                <!-- Step 3: Dates -->
                 <div class="form-step" id="formStep3">
-                    <div class="step-card">
-                        <div class="text-center mb-6">
-                            <div class="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-3">
-                                <i class="fas fa-calendar text-lg text-indigo-600"></i>
-                            </div>
-                            <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-1">¿Qué día?</h3>
-                            <p class="text-gray-600 text-sm">Selecciona dos opciones de día</p>
+                    <div class="step-header">
+                        <!-- Cambiando icono SVG por emoji -->
+                        <div class="step-icon">📅</div>
+                        <h3>¿Qué día?</h3>
+                        <p>Selecciona dos opciones de día</p>
+                    </div>
+                    
+                    <div class="date-grid">
+                        <div class="form-group">
+                            <label for="fecha1" class="form-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                Primera opción
+                            </label>
+                            <input type="date" id="fecha1" class="form-input" required>
+                            <div class="error-message" id="errorFecha1">Selecciona la primera fecha</div>
                         </div>
-                        <div class="space-y-4">
-                            <div class="date-grid">
-                                <div class="group">
-                                    <label for="fecha1" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-calendar mr-1 text-indigo-600"></i>Primera opción
-                                    </label>
-                                    <input type="date" id="fecha1" name="fecha1" class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                    <div class="error-message" id="error-fecha1">Por favor, selecciona la primera fecha</div>
-                                </div>
-                                
-                                <div class="group">
-                                    <label for="fecha2" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-calendar mr-1 text-indigo-600"></i>Segunda opción
-                                    </label>
-                                    <input type="date" id="fecha2" name="fecha2" class="input-focus w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 transition-all duration-300" required>
-                                    <div class="error-message" id="error-fecha2">Por favor, selecciona la segunda fecha</div>
-                                </div>
-                            </div>
+                        
+                        <div class="form-group">
+                            <label for="fecha2" class="form-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                Segunda opción
+                            </label>
+                            <input type="date" id="fecha2" class="form-input" required>
+                            <div class="error-message" id="errorFecha2">Selecciona la segunda fecha</div>
                         </div>
-                        <div class="flex space-x-3 mt-6">
-                            <button type="button" onclick="prevStep()" class="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-lg hover:bg-gray-300 transition-all duration-300 flex items-center justify-center space-x-2 text-sm">
-                                <i class="fas fa-arrow-left"></i><span>Atrás</span>
-                            </button>
-                            <button type="submit" id="submitBtn" class="flex-1 button-gradient text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center space-x-2 text-sm">
-                                <span>Enviar Solicitud</span><i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="19" y1="12" x2="5" y2="12"/>
+                                <polyline points="12 19 5 12 12 5"/>
+                            </svg>
+                            <span>Atrás</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span>Enviar Solicitud</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
 
-        <div class="text-center mt-6 fade-in">
-            <p class="text-gray-600 text-xs"><i class="fas fa-shield-alt mr-1"></i>Tus datos están protegidos y se envían de forma segura</p>
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Tus datos están protegidos y se envían de forma segura
+            </p>
         </div>
     </div>
 
-    <div id="messageToast" class="message-toast">
-        <div class="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 max-w-sm">
-            <div id="toastIcon" class="flex-shrink-0"><i class="fas fa-check-circle text-green-500 text-xl"></i></div>
-            <div>
-                <p id="toastMessage" class="font-semibold text-gray-800"></p>
-                <p id="toastSubMessage" class="text-sm text-gray-600"></p>
+    <!-- Agregando modal de confirmación con resumen de datos -->
+    <!-- Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header-text">
+                    <h2>Confirmar Solicitud</h2>
+                    <p>Revisa tus datos antes de enviar</p>
+                </div>
+                <button type="button" class="modal-close" id="closeModal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-section-title">Resumen de tu solicitud</p>
+                
+                <div class="modal-data-item">
+                    <div class="modal-data-icon">📝</div>
+                    <div class="modal-data-text">
+                        <p>Nombre</p>
+                        <p id="modalNombre">-</p>
+                    </div>
+                </div>
+
+                <div class="modal-data-item">
+                    <div class="modal-data-icon">📍</div>
+                    <div class="modal-data-text">
+                        <p>Dirección</p>
+                        <p id="modalDireccion">-</p>
+                    </div>
+                </div>
+
+                <div class="modal-data-item">
+                    <div class="modal-data-icon">📅</div>
+                    <div class="modal-data-text">
+                        <p>Primera opción</p>
+                        <p id="modalFecha1">-</p>
+                    </div>
+                </div>
+
+                <div class="modal-data-item">
+                    <div class="modal-data-icon">📅</div>
+                    <div class="modal-data-text">
+                        <p>Segunda opción</p>
+                        <p id="modalFecha2">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-info">
+                <div class="modal-info-content">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <div class="modal-info-text">
+                        <p>Estamos procesando tu solicitud</p>
+                        <p>Al confirmar, se abrirá WhatsApp con tu solicitud. Nuestro equipo te responderá en menos de 24 horas para coordinar la visita gratuita y sin compromiso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="modal-btn modal-btn-cancel" id="cancelBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                    <span>Cancelar</span>
+                </button>
+                <button type="button" class="modal-btn modal-btn-confirm" id="confirmBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    <span>Enviar a WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <div class="toast-icon" id="toastIcon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <div class="toast-text">
+                <p id="toastTitle">Título</p>
+                <p id="toastMessage">Mensaje</p>
             </div>
         </div>
     </div>
@@ -433,142 +1134,37 @@
         let currentStep = 1;
         const totalSteps = 3;
 
-        function validateStep(step) {
-            let isValid = true;
-
-            if (step === 1) {
-                const nombre = document.getElementById('nombre').value.trim();
-
-                if (!nombre) {
-                    showFieldError('nombre', 'Por favor, ingresa tu nombre completo');
-                    isValid = false;
-                } else {
-                    hideFieldError('nombre');
-                }
-            }
-
-            if (step === 2) {
-                const calle = document.getElementById('calle').value.trim();
-                const portal = document.getElementById('portal').value.trim();
-                const piso = document.getElementById('piso').value.trim();
-                const puerta = document.getElementById('puerta').value.trim();
-
-                if (!calle) {
-                    showFieldError('calle', 'Por favor, ingresa la calle y número');
-                    isValid = false;
-                } else {
-                    hideFieldError('calle');
-                }
-
-                if (!portal) {
-                    showFieldError('portal', 'Por favor, ingresa el portal');
-                    isValid = false;
-                } else {
-                    hideFieldError('portal');
-                }
-
-                if (!piso) {
-                    showFieldError('piso', 'Por favor, ingresa el piso o "Bajo"');
-                    isValid = false;
-                } else {
-                    hideFieldError('piso');
-                }
-
-                if (!puerta) {
-                    showFieldError('puerta', 'Por favor, ingresa la puerta');
-                    isValid = false;
-                } else {
-                    hideFieldError('puerta');
-                }
-            }
-
-            if (step === 3) {
-                const fecha1 = document.getElementById('fecha1').value;
-                const fecha2 = document.getElementById('fecha2').value;
-
-                if (!fecha1) {
-                    showFieldError('fecha1', 'Por favor, selecciona la primera fecha');
-                    isValid = false;
-                } else {
-                    hideFieldError('fecha1');
-                }
-
-                if (!fecha2) {
-                    showFieldError('fecha2', 'Por favor, selecciona la segunda fecha');
-                    isValid = false;
-                } else {
-                    hideFieldError('fecha2');
-                }
-
-                const today = new Date().toISOString().split('T')[0];
-                if (fecha1 < today) {
-                    showFieldError('fecha1', 'La fecha no puede ser anterior a hoy');
-                    isValid = false;
-                }
-                if (fecha2 < today) {
-                    showFieldError('fecha2', 'La fecha no puede ser anterior a hoy');
-                    isValid = false;
-                }
-            }
-
-            return isValid;
-        }
-
-        function showFieldError(fieldId, message) {
-            const field = document.getElementById(fieldId);
-            const errorElement = document.getElementById(`error-${fieldId}`);
-            
-            field.classList.add('input-error');
-            errorElement.textContent = message;
-            errorElement.classList.add('show');
-        }
-
-        function hideFieldError(fieldId) {
-            const field = document.getElementById(fieldId);
-            const errorElement = document.getElementById(`error-${fieldId}`);
-            
-            field.classList.remove('input-error');
-            errorElement.classList.remove('show');
-        }
+        const stepDescriptions = [
+            'Paso 1: Información personal',
+            'Paso 2: Dirección completa',
+            'Paso 3: Fechas disponibles'
+        ];
 
         function updateProgress() {
-            const progress1 = document.getElementById('progress1');
-            const progress2 = document.getElementById('progress2');
             const step1 = document.getElementById('step1');
             const step2 = document.getElementById('step2');
             const step3 = document.getElementById('step3');
-            const stepDescription = document.getElementById('step-description');
+            const progress1 = document.getElementById('progress1');
+            const progress2 = document.getElementById('progress2');
+            const stepDescription = document.getElementById('stepDescription');
 
             [step1, step2, step3].forEach(step => {
                 step.classList.remove('active', 'completed');
-                step.classList.add('pending');
             });
 
             if (currentStep >= 1) {
-                step1.classList.remove('pending');
-                step1.classList.add('active');
-                progress1.style.width = '100%';
+                step1.classList.add(currentStep === 1 ? 'active' : 'completed');
+                progress1.style.width = currentStep > 1 ? '100%' : '0%';
             }
             if (currentStep >= 2) {
-                step1.classList.remove('active');
-                step1.classList.add('completed');
-                step2.classList.remove('pending');
-                step2.classList.add('active');
-                progress2.style.width = '100%';
+                step2.classList.add(currentStep === 2 ? 'active' : 'completed');
+                progress2.style.width = currentStep > 2 ? '100%' : '0%';
             }
             if (currentStep >= 3) {
-                step2.classList.remove('active');
-                step2.classList.add('completed');
-                step3.classList.remove('pending');
                 step3.classList.add('active');
             }
 
-            const descriptions = [
-                'Paso 1: Información personal',
-                'Paso 2: Dirección completa',
-                'Paso 3: Fechas disponibles'
-            ];
-            stepDescription.textContent = descriptions[currentStep - 1];
+            stepDescription.textContent = stepDescriptions[currentStep - 1];
         }
 
         function showStep(step) {
@@ -576,6 +1172,98 @@
                 el.classList.remove('active');
             });
             document.getElementById(`formStep${step}`).classList.add('active');
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+
+            if (step === 1) {
+                const nombre = document.getElementById('nombre');
+                if (!nombre.value.trim()) {
+                    showError('nombre', 'Por favor, ingresa tu nombre completo');
+                    isValid = false;
+                } else {
+                    hideError('nombre');
+                }
+            }
+
+            if (step === 2) {
+                const fields = ['calle', 'portal', 'piso', 'puerta'];
+                fields.forEach(field => {
+                    const input = document.getElementById(field);
+                    if (!input.value.trim()) {
+                        showError(field, field === 'calle' ? 'Por favor, ingresa la calle y número' : 'Campo requerido');
+                        isValid = false;
+                    } else {
+                        hideError(field);
+                    }
+                });
+            }
+
+            if (step === 3) {
+                const fecha1 = document.getElementById('fecha1');
+                const fecha2 = document.getElementById('fecha2');
+                const today = new Date().toISOString().split('T')[0];
+
+                if (!fecha1.value) {
+                    showError('fecha1', 'Selecciona la primera fecha');
+                    isValid = false;
+                } else if (fecha1.value < today) {
+                    showError('fecha1', 'La fecha no puede ser anterior a hoy');
+                    isValid = false;
+                } else {
+                    hideError('fecha1');
+                }
+
+                if (!fecha2.value) {
+                    showError('fecha2', 'Selecciona la segunda fecha');
+                    isValid = false;
+                } else if (fecha2.value < today) {
+                    showError('fecha2', 'La fecha no puede ser anterior a hoy');
+                    isValid = false;
+                } else {
+                    hideError('fecha2');
+                }
+            }
+
+            return isValid;
+        }
+
+        function showError(fieldId, message) {
+            const input = document.getElementById(fieldId);
+            const error = document.getElementById(`error${fieldId.charAt(0).toUpperCase() + fieldId.slice(1)}`);
+            input.classList.add('error');
+            error.textContent = message;
+            error.classList.add('show');
+        }
+
+        function hideError(fieldId) {
+            const input = document.getElementById(fieldId);
+            const error = document.getElementById(`error${fieldId.charAt(0).toUpperCase() + fieldId.slice(1)}`);
+            input.classList.remove('error');
+            error.classList.remove('show');
+        }
+
+        function showToast(title, message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastIcon = document.getElementById('toastIcon');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+
+            toastIcon.className = `toast-icon ${type}`;
+            if (type === 'success') {
+                toastIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+            } else {
+                toastIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+            }
+
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
         }
 
         function nextStep() {
@@ -598,31 +1286,8 @@
             }
         }
 
-        function showToast(message, subMessage, type = 'success') {
-            const toast = document.getElementById('messageToast');
-            const toastMessage = document.getElementById('toastMessage');
-            const toastSubMessage = document.getElementById('toastSubMessage');
-            const toastIcon = document.getElementById('toastIcon');
-
-            toastMessage.textContent = message;
-            toastSubMessage.textContent = subMessage;
-
-            if (type === 'success') {
-                toastIcon.innerHTML = '<i class="fas fa-check-circle text-green-500 text-xl"></i>';
-            } else if (type === 'error') {
-                toastIcon.innerHTML = '<i class="fas fa-exclamation-circle text-red-500 text-xl"></i>';
-            } else if (type === 'loading') {
-                toastIcon.innerHTML = '<div class="loading-spinner"></div>';
-            }
-
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
-        }
-
         function formatDate(dateString) {
-            const date = new Date(dateString);
+            const date = new Date(dateString + 'T00:00:00');
             return date.toLocaleDateString('es-ES', {
                 weekday: 'long',
                 year: 'numeric',
@@ -631,18 +1296,50 @@
             });
         }
 
-        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
             if (!validateStep(3)) {
                 showToast('Campos requeridos', 'Por favor, completa todos los campos obligatorios', 'error');
                 return;
             }
 
+            // Obtener los datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const calle = document.getElementById('calle').value;
+            const portal = document.getElementById('portal').value;
+            const piso = document.getElementById('piso').value;
+            const puerta = document.getElementById('puerta').value;
+            const fecha1 = document.getElementById('fecha1').value;
+            const fecha2 = document.getElementById('fecha2').value;
+
+            // Llenar el modal con los datos
+            document.getElementById('modalNombre').textContent = nombre;
+            document.getElementById('modalDireccion').textContent = `${calle}, Portal ${portal}, ${piso}, Puerta ${puerta}`;
+            document.getElementById('modalFecha1').textContent = formatDate(fecha1);
+            document.getElementById('modalFecha2').textContent = formatDate(fecha2);
+
+            // Mostrar el modal
+            document.getElementById('confirmModal').classList.add('active');
+        });
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('confirmModal').classList.remove('active');
+        });
+
+        document.getElementById('cancelBtn').addEventListener('click', () => {
+            document.getElementById('confirmModal').classList.remove('active');
+        });
+
+        document.getElementById('confirmModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('confirmModal')) {
+                document.getElementById('confirmModal').classList.remove('active');
+            }
+        });
+
+        document.getElementById('confirmBtn').addEventListener('click', () => {
             const submitBtn = document.getElementById('submitBtn');
-            const originalContent = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<div class="loading-spinner"></div><span class="ml-2">Enviando...</span>';
+            submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
             const nombre = document.getElementById('nombre').value;
@@ -653,15 +1350,13 @@
             const fecha1 = document.getElementById('fecha1').value;
             const fecha2 = document.getElementById('fecha2').value;
 
-            const pisoText = piso.toLowerCase().includes('bajo') || piso.toLowerCase() === 'b' ? 'Bajo' : piso;
-
             const mensaje = `*SOLICITUD DE SERVICIO DE LIMPIEZA*
 
 *Cliente:* ${nombre}
 
 *Dirección:*
 ${calle}
-Portal ${portal}, ${pisoText}, Puerta ${puerta}
+Portal ${portal}, ${piso}, Puerta ${puerta}
 Valencia capital
 
 *Fechas disponibles:*
@@ -670,46 +1365,30 @@ Valencia capital
 
 _Visita gratuita y sin compromiso_`;
 
-            const encodedMessage = encodeURIComponent(mensaje.trim());
-            const whatsappUrl = `https://wa.me/34602846694?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/34602846694?text=${encodeURIComponent(mensaje)}`;
 
             setTimeout(() => {
                 window.open(whatsappUrl, '_blank');
-                showToast('¡Redirigiendo a WhatsApp!', 'Se abrirá WhatsApp con tu solicitud', 'success');
+                showToast('¡Solicitud enviada!', 'Te estamos redirigiendo a WhatsApp', 'success');
                 
-                submitBtn.innerHTML = originalContent;
+                document.getElementById('confirmModal').classList.remove('active');
+                submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
-            }, 1500);
+            }, 1000);
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            updateProgress();
-            
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('fecha1').setAttribute('min', today);
             document.getElementById('fecha2').setAttribute('min', today);
             
-            setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach((el, index) => {
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }, index * 200);
-                });
-            }, 100);
+            updateProgress();
         });
 
-        document.querySelectorAll('input').forEach(input => {
+        document.querySelectorAll('.form-input').forEach(input => {
             input.addEventListener('input', function() {
-                const fieldId = this.id;
-                const value = this.value.trim();
-                
-                if (value !== '') {
-                    this.classList.add('border-green-400', 'bg-green-50');
-                    this.classList.remove('border-red-400', 'bg-red-50', 'input-error');
-                    hideFieldError(fieldId);
-                } else {
-                    this.classList.remove('border-green-400', 'bg-green-50');
+                if (this.value.trim()) {
+                    hideError(this.id);
                 }
             });
         });
